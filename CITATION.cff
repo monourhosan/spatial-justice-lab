@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "If you use this research codebase or mathematical methodology, please cite it as below."
+title: "spatial-justice-lab: Quantifying Spatial (In)Justice With Mathematics, Open Data, and Python"
+authors:
+  - family-names: Saif
+    given-names: Monour Hosan
+repository-code: "https://github.com/monourhosan/spatial-justice-lab"
+abstract: >-
+  A computational and applied mathematical framework operationalizing and empirically testing
+  neighborhood socioeconomic disadvantage against walking-network accessibility to public amenities.
+  Empirically evaluated using U.S. Census Bureau ACS data, City of Chicago open data portals, and
+  OpenStreetMap walking graphs. Inspired by Adnan Zillur Morshed (ed.), Spatial (In)Justice: How
+  Does It Manifest in the Built Environment? (John Wiley & Sons, 2024/2025, ISBN: 978-1394294664).
+license: "MIT"
+version: 0.1.0
+date-released: "2026-11-11"
+references:
+  - type: book
+    title: "Spatial (In)Justice: How Does It Manifest in the Built Environment?"
+    editor:
+      - family-names: Morshed
+        given-names: Adnan Zillur
+    publisher:
+      name: "John Wiley & Sons"
+    isbn: "978-1394294664"
+    year: 2024

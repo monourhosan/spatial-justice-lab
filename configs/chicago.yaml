@@ -1,0 +1,46 @@
+# Configuration for Chicago Spatial Justice Accessibility Study
+study_area:
+  name: "chicago"
+  display_name: "City of Chicago, Illinois"
+  state_fips: "17"
+  county_fips: "031"
+  projected_crs: "EPSG:26971"  # NAD83 / Illinois East (meters)
+  geographic_crs: "EPSG:4326"  # WGS 84
+  inclusion_rule: "representative_point" # "representative_point" or "centroid" or "intersection"
+  secondary_inclusion_rule: "intersection"
+
+data_sources:
+  census_vintage: 2023
+  census_acs_variables:
+    poverty_universe: "B17001_001E"
+    poverty_count: "B17001_002E"
+    total_population: "B01003_001E"
+    median_income: "B19013_001E"
+  tiger_tracts_url: "https://www2.census.gov/geo/tiger/TIGER2023/TRACT/tl_2023_17_tract.zip"
+  tiger_roads_url: "https://www2.census.gov/geo/tiger/TIGER2023/ROADS/tl_2023_17031_roads.zip"
+  census_acs_summary_base: "https://www2.census.gov/programs-surveys/acs/summary_file/2023/table-based-SF/data/5YRData/"
+  census_api_base: "https://api.census.gov/data/2023/acs/acs5"
+  chicago_boundary_url: "https://data.cityofchicago.org/resource/qqq8-j68g.geojson"
+  chicago_libraries_url: "https://data.cityofchicago.org/resource/x8fc-8rcq.json"
+  chicago_parks_url: "https://data.cityofchicago.org/resource/ejsh-fztr.geojson"
+
+routing:
+  network_type: "walk"
+  walking_speed_mps: 1.2  # 1.2 meters per second (~4.32 km/h)
+  overpass_timeout: 180
+  cache_graphml: true
+  graphml_path: "data/raw/chicago_walk.graphml"
+
+mathematical_model:
+  tau_primary: 1000.0  # meters
+  tau_sensitivities: [500.0, 2000.0]  # meters
+  poverty_quintiles: 5
+  multi_amenity_weights:
+    libraries: 0.7
+    parks: 0.3
+
+statistics:
+  alpha: 0.05
+  bootstrap_replications: 1000
+  random_seed: 42
+  spatial_weights_k: 5

@@ -1,0 +1,132 @@
+{
+  "metadata": {
+    "project": "spatial-justice-mathematical-model",
+    "timestamp_utc": "2026-11-11T10:09:00.143289+00:00",
+    "study_area": "Chicago, Illinois, USA",
+    "crs_projected": "EPSG:26971 (NAD83 / Illinois East meters)",
+    "primary_amenity": "Chicago Public Library Branches",
+    "data_vintages": {
+      "census_acs": "2019-2023 5-Year Detailed Estimates",
+      "census_tiger": "2023 Illinois Tracts",
+      "chicago_libraries": "Official Municipal Inventory (dataset x8fc-8rcq)",
+      "chicago_boundary": "Official Municipal Boundary (dataset qqq8-j68g)",
+      "osm_network": "OpenStreetMap Walkable Pedestrian Graph"
+    }
+  },
+  "results": {
+    "sample_sizes": {
+      "n_total_tracts": 781,
+      "n_analysis_tracts": 778,
+      "n_libraries": 82,
+      "total_population": 2664576.0
+    },
+    "distance_summary": {
+      "min_network_m": 20.597335310953905,
+      "median_network_m": 1242.7533770326627,
+      "mean_network_m": 1319.5398350985254,
+      "max_network_m": 5470.861311044942,
+      "std_network_m": 632.1722594539526,
+      "min_euclidean_m": 13.66493528211363,
+      "median_euclidean_m": 963.7634972897506,
+      "mean_euclidean_m": 999.3966689327272,
+      "max_euclidean_m": 3361.391848091263,
+      "std_euclidean_m": 477.69450606900557,
+      "mean_origin_snap_m": 35.78227656401746
+    },
+    "accessibility_summary": {
+      "pop_weighted_mean_tau500": 0.12806778184953047,
+      "pop_weighted_mean_tau1000": 0.3153249417433412,
+      "pop_weighted_mean_tau2000": 0.5402769328775788,
+      "gini_tau500": 0.5151489633915713,
+      "gini_tau1000": 0.30066428355381003,
+      "gini_tau2000": 0.16143613807240664,
+      "disparity_tau500": 0.0010796484354474306,
+      "disparity_tau1000": -0.0015093822271714519,
+      "disparity_tau2000": -0.003552027018801751
+    },
+    "correlations": {
+      "n": 778,
+      "spearman_rho": 0.019726602891361616,
+      "spearman_pvalue": 0.5827337040097333,
+      "spearman_ci95_lower": -0.04691469108914126,
+      "spearman_ci95_upper": 0.09262942982383533,
+      "pearson_r": 0.02989421060727904,
+      "pearson_pvalue": 0.40502849633362886
+    },
+    "quintile_disparity": {
+      "mean_high_poverty_q5": 0.3004578459879782,
+      "mean_low_poverty_q1": 0.30196722821514965,
+      "disparity_delta": -0.0015093822271714519,
+      "n_tracts_q1": 156,
+      "n_tracts_q5": 156,
+      "pop_q1": 579635.0,
+      "pop_q5": 443316.0
+    },
+    "regression": {
+      "n": 778,
+      "r_squared": 0.09732153069183369,
+      "adj_r_squared": 0.09382277693482532,
+      "summary_table": [
+        {
+          "variable": "Intercept",
+          "coefficient": 9.004555559469516,
+          "std_error_hc1": 0.7191053327562791,
+          "t_statistic": 12.521886779723495,
+          "p_value": 0.0,
+          "ci95_lower": 7.592927592377512,
+          "ci95_upper": 10.41618352656152
+        },
+        {
+          "variable": "poverty_rate (q_i)",
+          "coefficient": -0.08062933393547395,
+          "std_error_hc1": 0.2566794626050006,
+          "t_statistic": -0.31412460162250294,
+          "p_value": 0.7535110513276706,
+          "ci95_lower": -0.5844997566488719,
+          "ci95_upper": 0.42324108877792405
+        },
+        {
+          "variable": "log(1 + density)",
+          "coefficient": -0.24205775555806214,
+          "std_error_hc1": 0.02480794171822748,
+          "t_statistic": -9.757268793493324,
+          "p_value": 0.0,
+          "ci95_lower": -0.2907565799725757,
+          "ci95_upper": -0.19335893114354857
+        },
+        {
+          "variable": "log(median_income)",
+          "coefficient": 0.014390706378236418,
+          "std_error_hc1": 0.061344879940244734,
+          "t_statistic": 0.23458691894505657,
+          "p_value": 0.8145914053463947,
+          "ci95_lower": -0.10603135728472368,
+          "ci95_upper": 0.13481277004119652
+        }
+      ]
+    },
+    "spatial_autocorrelation": {
+      "morans_i": 0.26096098309840843,
+      "expected_i": -0.001287001287001287,
+      "z_score": 12.110890200310681,
+      "p_value": 0.001,
+      "k_neighbors": 5,
+      "permutations": 999
+    },
+    "sampling_error_sensitivity": {
+      "n_simulations": 100,
+      "spearman_rho_mean": 0.01945605466366688,
+      "spearman_rho_std": 0.018416415149894883,
+      "spearman_rho_ci95": [
+        -0.012372872980155289,
+        0.052052006218985626
+      ],
+      "disparity_delta_mean": -0.008907519686764231,
+      "disparity_delta_std": 0.013840769003126885,
+      "disparity_delta_ci95": [
+        -0.03631937312251371,
+        0.014956436180755454
+      ]
+    }
+  }
+}

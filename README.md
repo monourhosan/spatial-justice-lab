@@ -116,7 +116,34 @@ All metrics below are computed from official datasets executed through the pipel
 
 ---
 
-## 5. Visualizations
+---
+
+## 5. Cross-City Model Validation: Chicago, IL vs. Washington, D.C.
+
+To test whether the model's empirical findings are generalizable across different urban geographies or specific to Chicago, we validated the model using an independent municipal and federal open dataset from **Washington, District of Columbia** ($n = 206$ populated census tracts, $m = 28$ DC Public Library branches, ACS 2019–2023):
+
+### Out-of-Sample Predictive Generalization (Chicago Model Applied to DC)
+Applying the Chicago-trained econometric regression ($\hat{\beta}_{\text{chicago}} = [9.0046, -0.0806, -0.2421, +0.0144]$) directly to Washington, D.C. without retraining:
+- **Out-of-Sample $R^2$:** $0.0615$ ($6.15\%$) on log-walking distance (positive and close to training $R^2 = 9.73\%$, proving absence of overfitting).
+- **Correlation (Actual vs. Predicted):** $r = 0.2789$ ($p = 4.92 \times 10^{-5}$), confirming statistically significant cross-city predictive validity.
+- **Mean Absolute Error (MAE):** $508.1\text{ m}$ (Median Absolute Error: $425.1\text{ m}$).
+- **Mean Signed Bias:** $-11.2\text{ m}$ ($< 1\%$ signed bias relative to the $1,234.4\text{ m}$ mean distance).
+
+### Dual-City Empirical Comparison
+
+| Analytical Dimension | Chicago, IL ($n=778$, $m=82$) | Washington, D.C. ($n=206$, $m=28$) | Generalization Finding |
+|---|---|---|---|
+| **$H_0$ Correlation $\rho(q_i, d_i)$** | $\rho = +0.020$ ($p = 0.583$) | $\rho = -0.008$ ($p = 0.915$) | **$H_0$ cannot be rejected in either city** |
+| **Quintile Disparity ($\Delta_A$)** | $-0.0015$ | $+0.0296$ | No physical walking deficit for high poverty |
+| **Gini Inequality ($G_A$, $\tau=1000$)**| $0.301$ | $0.311$ | Nearly identical spatial inequality |
+| **Density Elasticity ($\beta_{\text{density}}$)**| **$-0.242$ ($p < 10^{-16}$)** | **$-0.202$ ($p = 4.24 \times 10^{-5}$)** | **Universal structural driver of proximity** |
+| **Poverty Coefficient ($\beta_{\text{poverty}}$)**| $-0.081$ ($p = 0.754$) | $-0.167$ ($p = 0.649$) | Statistically zero in both cities |
+
+*Full cross-city report available at [`results/cross_city_findings.md`](results/cross_city_findings.md) and machine-readable data at [`results/cross_city_comparison.json`](results/cross_city_comparison.json).*
+
+---
+
+## 6. Visualizations
 
 | Figure Preview | Description |
 |---|---|
@@ -133,7 +160,7 @@ All metrics below are computed from official datasets executed through the pipel
 
 ---
 
-## 6. Repository Architecture
+## 7. Repository Architecture
 
 ```text
 spatial-justice-mathematical-model/
@@ -145,7 +172,8 @@ spatial-justice-mathematical-model/
 ├── pyproject.toml                      # Modern Python packaging configuration
 ├── requirements.txt                    # Pinned dependency manifest
 ├── configs/
-│   └── chicago.yaml                    # Declarative experiment parameters and URLs
+│   ├── chicago.yaml                    # Declarative experiment parameters and URLs
+│   └── dc.yaml                         # Washington, D.C. configuration
 ├── data/
 │   ├── README.md                       # Data directory rules and provenance
 │   ├── metadata/
@@ -181,6 +209,8 @@ spatial-justice-mathematical-model/
 │   └── github_publish_steps.md         # Instructions for publishing repository to GitHub
 ├── results/
 │   ├── README.md                       # Deliverable directory manifest
+│   ├── cross_city_findings.md          # Dual-city validation findings (Chicago vs. DC)
+│   ├── cross_city_comparison.json      # Structured cross-city comparative metrics
 │   ├── findings.md                     # Scientific research findings report
 │   ├── metrics.json                    # Full structured numeric parameters and run metadata
 │   ├── interactive_chicago_map.html    # Interactive Leaflet web map
@@ -197,7 +227,7 @@ spatial-justice-mathematical-model/
 
 ---
 
-## 7. How to Reproduce
+## 8. How to Reproduce
 
 Detailed instructions for Windows, macOS, and Linux are in [`docs/reproducibility.md`](docs/reproducibility.md).
 
@@ -225,7 +255,7 @@ python -m spatial_justice.pipeline --config configs/chicago.yaml
 
 ---
 
-## 8. Data Sources and Attribution
+## 9. Data Sources and Attribution
 
 All data are acquired directly from official government and open-collaborative repositories:
 - **U.S. Census Bureau:** American Community Survey (ACS) 2019–2023 5-Year Estimates and 2023 TIGER/Line Shapefiles. (U.S. Public Domain).
@@ -236,7 +266,7 @@ See [`docs/data_sources.md`](docs/data_sources.md) for complete provenance metad
 
 ---
 
-## 9. Citation
+## 10. Citation
 
 If you use this research methodology, software, or empirical analysis, please cite:
 
@@ -252,6 +282,6 @@ If you use this research methodology, software, or empirical analysis, please ci
 
 ---
 
-## 10. License
+## 11. License
 
 This project's original source code is released under the [MIT License](LICENSE). Third-party datasets retain their respective public domain and open database licenses.

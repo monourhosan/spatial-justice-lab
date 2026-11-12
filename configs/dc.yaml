@@ -1,0 +1,32 @@
+# Configuration for Washington, D.C. Spatial Justice Accessibility Study
+study_area:
+  name: "washington_dc"
+  display_name: "Washington, District of Columbia"
+  state_fips: "11"
+  county_fips: "001"
+  projected_crs: "EPSG:26985"  # NAD83 / Maryland (meters)
+  geographic_crs: "EPSG:4326"  # WGS 84
+  inclusion_rule: "representative_point"
+  secondary_inclusion_rule: "intersection"
+
+data_sources:
+  census_vintage: 2023
+  dc_economic_characteristics_url: "https://maps2.dcgis.dc.gov/dcgis/rest/services/OP/ACS_Economic_Characteristics/MapServer/59/query"
+  dc_demographic_characteristics_url: "https://maps2.dcgis.dc.gov/dcgis/rest/services/OP/ACS_Demographic_Characteristics/MapServer/57/query"
+  dc_libraries_url: "https://opendata.dc.gov/api/download/v1/items/cab0eaaad4e242c18a36422c3323e6ac/geojson?layers=4"
+
+routing:
+  network_type: "walk"
+  walking_speed_mps: 1.2
+  circuity_factor: 1.3203
+
+mathematical_model:
+  tau_primary: 1000.0  # meters
+  tau_sensitivities: [500.0, 2000.0]  # meters
+  poverty_quintiles: 5
+
+statistics:
+  alpha: 0.05
+  bootstrap_replications: 1000
+  random_seed: 42
+  spatial_weights_k: 5

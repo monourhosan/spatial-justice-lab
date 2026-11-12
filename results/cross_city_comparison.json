@@ -1,0 +1,109 @@
+{
+  "metadata": {
+    "source_model": "Chicago, Illinois (ACS 2019-2023, n=778 tracts, 82 libraries)",
+    "target_evaluation": "Washington, District of Columbia (ACS 2019-2023, n=206 tracts, 28 libraries)",
+    "projection_crs": "EPSG:26985 (NAD83 / Maryland meters)"
+  },
+  "sample_comparison": {
+    "chicago": {
+      "n_tracts": 778,
+      "total_population": 2664576.0,
+      "n_libraries": 82,
+      "mean_distance_m": 1319.5398350985254,
+      "median_distance_m": 1242.7533770326627,
+      "mean_access_tau1000": 0.3153249417433412,
+      "gini_access_tau1000": 0.30066428355381003
+    },
+    "washington_dc": {
+      "n_tracts": 206,
+      "total_population": 672079.0,
+      "n_libraries": 28,
+      "mean_distance_m": 1234.435950804879,
+      "median_distance_m": 1112.645306854724,
+      "mean_access_tau1000": 0.34385912652840844,
+      "gini_access_tau1000": 0.31064334655567083
+    }
+  },
+  "out_of_sample_model_accuracy": {
+    "r2_out_of_sample": 0.06148041305215868,
+    "correlation_actual_vs_predicted": 0.27890884841377594,
+    "mae_log_distance": 0.4547173674978668,
+    "rmse_log_distance": 0.5866497194477446,
+    "mae_meters": 508.10929171531177,
+    "rmse_meters": 710.4658748762889,
+    "median_absolute_error_meters": 425.13097986416057,
+    "mape_percent": 62.521822312675035,
+    "mean_bias_meters": -11.231951518525854
+  },
+  "dc_in_sample_econometric_fit": {
+    "n": 206,
+    "r_squared": 0.10310792357329768,
+    "adj_r_squared": 0.08978774422042579,
+    "summary_table": [
+      {
+        "variable": "Intercept",
+        "coefficient": 9.293279068950685,
+        "std_error_hc1": 1.271608608632368,
+        "t_statistic": 7.308285745993597,
+        "p_value": 6.1672889017927446e-12,
+        "ci95_lower": 6.785949972297711,
+        "ci95_upper": 11.80060816560366
+      },
+      {
+        "variable": "poverty_rate (q_i)",
+        "coefficient": -0.16684746166479614,
+        "std_error_hc1": 0.36617298295236184,
+        "t_statistic": -0.4556520263170332,
+        "p_value": 0.6491296502745012,
+        "ci95_lower": -0.8888590683274128,
+        "ci95_upper": 0.5551641449978205
+      },
+      {
+        "variable": "log(1 + density)",
+        "coefficient": -0.20197927945139482,
+        "std_error_hc1": 0.04825372930036892,
+        "t_statistic": -4.185775532376326,
+        "p_value": 4.2398208245364444e-05,
+        "ci95_lower": -0.29712489161184985,
+        "ci95_upper": -0.10683366729093977
+      },
+      {
+        "variable": "log(median_income)",
+        "coefficient": -0.04911076270805265,
+        "std_error_hc1": 0.09797705663449431,
+        "t_statistic": -0.5012475817809213,
+        "p_value": 0.616742689488468,
+        "ci95_lower": -0.24229970719647925,
+        "ci95_upper": 0.14407818178037396
+      }
+    ]
+  },
+  "dc_spatial_justice_hypotheses": {
+    "correlations": {
+      "n": 206,
+      "spearman_rho": -0.007495402891315766,
+      "spearman_pvalue": 0.9148475641495878,
+      "spearman_ci95_lower": -0.15440126294066167,
+      "spearman_ci95_upper": 0.14393221890818994,
+      "pearson_r": 0.02386346229553263,
+      "pearson_pvalue": 0.7335030037994706
+    },
+    "quintile_disparity": {
+      "mean_high_poverty_q5": 0.3646047385248864,
+      "mean_low_poverty_q1": 0.3349830259499219,
+      "disparity_delta": 0.029621712574964487,
+      "n_tracts_q1": 41,
+      "n_tracts_q5": 42,
+      "pop_q1": 129116.0,
+      "pop_q5": 141033.0
+    },
+    "accessibility_summary": {
+      "pop_weighted_mean_tau500": 0.15442753182649066,
+      "pop_weighted_mean_tau1000": 0.34385912652840844,
+      "pop_weighted_mean_tau2000": 0.5625349818649515,
+      "gini_tau500": 0.5252074931479433,
+      "gini_tau1000": 0.31064334655567083,
+      "gini_tau2000": 0.1680068306622391
+    }
+  }
+}
